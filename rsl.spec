@@ -145,7 +145,7 @@ etc. There are approximately 20 field types.
 This package contains RSL documentation.
 
 %files doc
-%doc %{_docdir}/rsl/
+%doc doc/*.html doc/*.gif doc/*.jpg doc/*.fig
 
 #------------------------------------------------------------------------------
 
@@ -161,3 +161,4 @@ autoreconf
 %install
 %makeinstall_std
 rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
+rm -rf %{buildroot}%{_docdir}
