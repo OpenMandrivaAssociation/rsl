@@ -1,0 +1,56 @@
+Index: rsl-v1.42/colors/Makefile.am
+===================================================================
+--- rsl-v1.42.orig/colors/Makefile.am
++++ rsl-v1.42/colors/Makefile.am
+@@ -1,6 +1,6 @@
+ AUTOMAKE_OPTIONS = foreign
+ 
+-colordir = $(prefix)/lib/colors
++colordir = $(prefix)/share/rsl/colors
+ color_DATA = *.???
+ 
+ EXTRA_DIST = $(color_DATA)
+Index: rsl-v1.42/Makefile.am
+===================================================================
+--- rsl-v1.42.orig/Makefile.am
++++ rsl-v1.42/Makefile.am
+@@ -1,10 +1,11 @@
+ ## Process w/ automake.  Or, autoreconf; make ##
+ AUTOMAKE_OPTIONS = foreign
+-SUBDIRS = . colors doc examples
++SUBDIRS = . colors examples
+ INCLUDES = -I. -I$(srcdir) -I$(prefix)/include -I$(prefix)/toolkit/include
+ 
+-includedir = $(prefix)/include 
+-colordir = $(libdir)/colors
++datadir = $(prefix)/share/rsl
++includedir = $(prefix)/include/rsl
++colordir = $(datadir)/colors
+ 
+ lib_LTLIBRARIES = librsl.la
+ 
+@@ -44,7 +45,7 @@ rsl.h: Makefile
+ 	cp $$h $$h.in; \
+ 	sed -e 's/RSL_VERSION_STR.*/RSL_VERSION_STR \"$(VERSION)\"/' \
+          -e 's|#define COLORDIR.*|#define COLORDIR \"$(colordir)\"|' \
+-         -e 's|#define WSR88D_SITE_INFO_FILE.*|#define WSR88D_SITE_INFO_FILE \"$(libdir)/wsr88d_locations.dat\"|' \
++         -e 's|#define WSR88D_SITE_INFO_FILE.*|#define WSR88D_SITE_INFO_FILE \"$(datadir)/wsr88d_locations.dat\"|' \
+     < $$h.in > $$h.new; \
+ 	if cmp -s $$h $$h.new; then \
+        rm $$h.new; \
+@@ -63,10 +64,11 @@ LEX_OUTPUT_ROOT = lex.$(PREFIX)
+ 
+ 
+ install-exec-hook:
+-	$(INSTALL) -d  $(includedir)
+-	$(INSTALL) -m 644 rsl.h $(includedir)
+-	$(INSTALL) -m 644 toolkit_1BC-51_appl.h $(includedir)
+-	$(INSTALL) -m 644 wsr88d_locations.dat $(libdir)
++	$(INSTALL) -d $(DESTDIR)$(includedir)
++	$(INSTALL) -m 644 rsl.h $(DESTDIR)$(includedir)
++	$(INSTALL) -m 644 toolkit_1BC-51_appl.h $(DESTDIR)$(includedir)
++	$(INSTALL) -d $(DESTDIR)$(datadir)
++	$(INSTALL) -m 644 wsr88d_locations.dat $(DESTDIR)$(datadir)
+ 
+ EXTRA_DIST = CHANGES Copyright GPL LGPL wsr88d_locations.dat rapic.h
+ 
