@@ -162,3 +162,12 @@ autoreconf
 %makeinstall_std
 rm -f %{buildroot}%{_libdir}/*.la %{buildroot}%{_libdir}/*.a
 rm -rf %{buildroot}%{_docdir}
+
+
+%changelog
+* Wed Dec 21 2011 Dmitry Mikhirev <dmikhirev@mandriva.org> 1.42-1
++ Revision: 744086
+- fixed documentation packaging
+- BR zlib-devel added
+- imported package rsl
+
