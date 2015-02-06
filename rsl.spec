@@ -3,7 +3,7 @@
 
 Name:		rsl
 Version:	1.42
-Release:	1
+Release:	2
 Group:		System/Libraries
 License:	LGPLv2+
 URL:		http://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/
