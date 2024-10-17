@@ -6,7 +6,7 @@ Version:	1.42
 Release:	2
 Group:		System/Libraries
 License:	LGPLv2+
-URL:		http://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/
+URL:		https://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/
 Summary:	TRMM Radar Software Library
 Source0:	%{name}-v%{version}.tar.gz
 Patch0:		rsl-1.42-mdv-install.patch
