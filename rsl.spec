@@ -10,6 +10,11 @@ URL:		https://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/
 Summary:	TRMM Radar Software Library
 Source0:	%{name}-v%{version}.tar.gz
 Patch0:		rsl-1.42-mdv-install.patch
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	zlib-devel
 BuildRequires:	flex
 
